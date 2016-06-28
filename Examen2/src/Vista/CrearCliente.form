@@ -45,6 +45,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Cliente"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
