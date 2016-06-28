@@ -60,16 +60,12 @@ public class CrearCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
+    private void crearActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
-//        VentanaPrincipal principal=new VentanaPrincipal();
-//        principal.setVisible(true);
-//        crear.setBackground(Color.pink);
-    }//GEN-LAST:event_crearActionPerformed
-
-    private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_crearActionPerformed
+        VentanaPrincipal principal=new VentanaPrincipal();
+        principal.setVisible(true);
+        crear.setBackground(Color.pink);
+    }                                     
 
     /**
      * @param args the command line arguments
