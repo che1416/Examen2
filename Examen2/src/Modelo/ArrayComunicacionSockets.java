@@ -71,4 +71,11 @@ public class ArrayComunicacionSockets {
             Logger.getLogger(ArrayComunicacionSockets.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public  void listaArray(Comunicacion comu){
+        
+        for(int i=0;i<array.size();i++){
+            array.get(i);
+         }
+    }
 }
