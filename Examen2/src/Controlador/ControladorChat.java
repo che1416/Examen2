@@ -31,4 +31,8 @@ public class ControladorChat {
     public void runCliente(){
         client.runClient();
     }
+    
+    public String getNombreControlador(){
+        return client.getNombre();
+    }
 }
