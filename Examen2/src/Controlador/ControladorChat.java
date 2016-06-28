@@ -31,4 +31,5 @@ public class ControladorChat {
     public void runCliente(){
         client.runClient();
     }
+    
 }
