@@ -43,24 +43,17 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="privadoBtn" min="-2" pref="118" max="-2" attributes="0"/>
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="textIP" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="textNombre" min="-2" pref="141" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="grupalBtn" min="-2" pref="126" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="grupalBtn" min="-2" pref="123" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="difusionBtn" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="textNombre" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="textIP" min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="difusionBtn" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="90" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,10 +70,10 @@
                   <Component id="textIP" alignment="3" min="-2" pref="57" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" pref="30" max="32767" attributes="0"/>
+              <EmptySpace type="separate" pref="51" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="grupalBtn" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="difusionBtn" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="grupalBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="difusionBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="privadoBtn" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
