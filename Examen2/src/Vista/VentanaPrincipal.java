@@ -45,6 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        textIP.setText("localhost");
         textIP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textIPActionPerformed(evt);
@@ -70,6 +71,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         grupalBtn.setText("Chat Grupal");
+        grupalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grupalBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,8 +135,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_difusionBtnActionPerformed
 
     private void privadoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privadoBtnActionPerformed
-        // TODO add your handling code here:
+       ListaPrivado listP=new ListaPrivado(controladorP);
+       listP.setVisible(true);
     }//GEN-LAST:event_privadoBtnActionPerformed
+
+    private void grupalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grupalBtnActionPerformed
+       ListaGrupal listG=new ListaGrupal(controladorP);
+       listG.setVisible(true);
+    }//GEN-LAST:event_grupalBtnActionPerformed
 
     public String getIP() throws Exception {
         if (!textIP.getText().equals("")) {

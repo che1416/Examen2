@@ -45,6 +45,9 @@ public class RecibirMsjCliente extends Thread {
         controladorC.recibirMensahe(msj);
     }
 
+    private void recibirMensahePrivado(String msj) {
+        controladorC.recibirMensahe(msj);
+    }
     private void procesarConexion() throws IOException {
         while (!desconectado) {
             String text = input.readUTF();
@@ -57,5 +60,5 @@ public class RecibirMsjCliente extends Thread {
         client.closeConnection();
 
     }
-
+     
 }
