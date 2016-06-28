@@ -85,6 +85,9 @@
     <Component class="javax.swing.JTextField" name="textNombre">
     </Component>
     <Component class="javax.swing.JTextField" name="textIP">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="localhost"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textIPActionPerformed"/>
       </Events>
@@ -119,6 +122,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Chat Grupal"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grupalBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

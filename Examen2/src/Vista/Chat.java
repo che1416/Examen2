@@ -31,6 +31,9 @@ public class Chat extends javax.swing.JFrame {
         historialTx.setText(historialTx.getText() + "\n" + mensaje);
     }
  
+     public void recibirMensahePrivado(String mensaje) {
+        historialTx.setText(historialTx.getText() + "\n" + mensaje);
+    }
     public void enviarMensaje() throws Exception {
         if (!enviarTx.getText().equals("")) {
             //  return enviarTx.getText();
