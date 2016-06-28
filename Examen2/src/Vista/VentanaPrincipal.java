@@ -31,7 +31,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jTextField3 = new javax.swing.JTextField();
         textNombre = new javax.swing.JTextField();
         textIP = new javax.swing.JTextField();
