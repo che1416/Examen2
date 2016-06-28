@@ -42,6 +42,16 @@ public class Servidor {
         System.out.println("Conexion recibida por: " + com.getAddress().getHostName());
     }
 
+    private void waitForConnectionPrivate() throws IOException {
+        System.out.println("Esperando conexion...\n");
+        Socket sock = server.accept();
+        Comunicacion com=new Comunicacion(sock);
+        //arrayCom.add(com);
+        com.runComunucacion();
+        System.out.println("Conexion recibida por: " + com.getAddress().getHostName());
+    }
+
+    
     
     private void closeConnection() {
         System.out.println("\nTerminando conexion");
