@@ -34,6 +34,13 @@ public class RecibirMsjServidor extends Thread{
      arrayC.enviarMensaje(msj, miComunicacion);
   }
   
+  public void recibirMensajePrivado(Comunicacion comu) throws IOException{
+     if(miComunicacion==comu){
+         String msj= input.readUTF();
+          arrayC.enviarMensaje(msj,comu);
+     }
+  }
+  
     public void run(){
         while(true){
             try {
