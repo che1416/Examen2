@@ -62,9 +62,9 @@ public class CrearCliente extends javax.swing.JFrame {
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
         // TODO add your handling code here:
-//        VentanaPrincipal principal=new VentanaPrincipal();
-//        principal.setVisible(true);
-//        crear.setBackground(Color.pink);
+        VentanaPrincipal principal=new VentanaPrincipal();
+        principal.setVisible(true);
+        crear.setBackground(Color.pink);
     }//GEN-LAST:event_crearActionPerformed
 
     /**
