@@ -60,7 +60,7 @@ public class Cliente {
     private void connectToServer() throws IOException {
         System.out.println("Esperando conexion\n");
         client = new Socket(host, PORT);
-        System.out.println("Conectado a : " + client.getInetAddress().getHostName());
+        System.out.println("Conectado a : "+getNombre()+" "+client.getInetAddress().getHostName());
     }
 
     private void getStreams() throws IOException {
