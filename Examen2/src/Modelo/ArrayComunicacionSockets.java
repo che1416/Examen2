@@ -72,10 +72,13 @@ public class ArrayComunicacionSockets {
         }
     }
 
-    public void listaArray(Comunicacion comu) {
-
+    public ArrayList<String> nombresDeClientes() {
+        ArrayList<String> nombres = new ArrayList<>();
         for (int i = 0; i < array.size(); i++) {
-            array.get(i);
+            if (array.get(i) != null) {
+                nombres.add(array.get(i).getNombre());
+            }
         }
+        return nombres;
     }
 }
