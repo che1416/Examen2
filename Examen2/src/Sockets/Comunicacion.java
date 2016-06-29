@@ -23,6 +23,7 @@ public class Comunicacion {
     private DataInputStream input;
     private Socket comunicacion;
     private RecibirMsjServidor hiloS;
+    private String nombre;
 
     public Comunicacion(Socket comunicacion) {
         this.comunicacion = comunicacion;
@@ -38,7 +39,7 @@ public class Comunicacion {
           }
     }
     
-    public InetAddress getAddress(){
+    public InetAddress getAddress() {
         return comunicacion.getInetAddress();
     }
     
@@ -60,6 +61,14 @@ public class Comunicacion {
     
     public void enviarMensaje(String mensaje) throws IOException{
        output.writeUTF(mensaje);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
 }

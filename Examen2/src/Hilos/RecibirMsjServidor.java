@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 public class RecibirMsjServidor extends Thread{
     private ArrayComunicacionSockets arrayC= ArrayComunicacionSockets.getInstance();
     private Comunicacion miComunicacion;
+    private String nombre;
     
     private DataInputStream input;
     
@@ -34,25 +35,29 @@ public class RecibirMsjServidor extends Thread{
      arrayC.enviarMensaje(msj, miComunicacion);
   }
   
-  public void recibirMensajePrivado(Comunicacion comu){
-     if(miComunicacion==comu){
-         try {
-             String msj= input.readUTF();
-             arrayC.enviarMensaje(msj,comu);
-         } catch (IOException ex) {
-             Logger.getLogger(RecibirMsjServidor.class.getName()).log(Level.SEVERE, null, ex);
-         }
-     }
+  public void recibirNombre() throws IOException {
+  String nombre= input.readUTF();
+      setNombre(nombre);
+      miComunicacion.setNombre(nombre);
   }
-  
     public void run(){
-        while(true){
-            try {
-                recibirMensaje();
-            } catch (IOException ex) {
-                Logger.getLogger(RecibirMsjServidor.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            recibirNombre();
+            while(true){
+                    recibirMensaje();
             }
+        } catch (IOException ex) {
+            Logger.getLogger(RecibirMsjServidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     
 }
