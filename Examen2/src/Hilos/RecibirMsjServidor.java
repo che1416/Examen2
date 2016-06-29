@@ -30,7 +30,7 @@ public class RecibirMsjServidor extends Thread {
         this.inputObj = inputObj;
     }
 
-    public void recibirMensaje() throws IOException {
+    public void recibirMensaje() throws IOException, InterruptedException {
         String msj = input.readUTF();
         if (opcionChat == 0) {
             arrayC.enviarMensaje(msj, miComunicacion);
@@ -56,7 +56,7 @@ public class RecibirMsjServidor extends Thread {
             while (true) {
                 recibirMensaje();
             }
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException | InterruptedException ex) {
             Logger.getLogger(RecibirMsjServidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -58,12 +58,14 @@ public class ArrayComunicacionSockets {
         }
     }
     
-    public void enviarMensajeGrupal(String msj, ArrayList<Integer> indices) throws IOException {
+    public void enviarMensajeGrupal(String msj, ArrayList<Integer> indices) throws IOException, InterruptedException {
+        lock.lock();
         for (int i = 0; i < indices.size(); i++) {
             if (array.get(i) != null) {
                     array.get(i).enviarMensaje(msj);
             }
         }
+        lock.unlock();
     }
 
     public ArrayList<String> nombresDeClientes() {
