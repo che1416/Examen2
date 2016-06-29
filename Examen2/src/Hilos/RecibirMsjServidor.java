@@ -69,10 +69,10 @@ public class RecibirMsjServidor extends Thread{
     private void accionOpcion() {
         if(opcionChat == 0) {
             chatGrupal = null;
-            mi
+//            mi
         } else {
             if(opcionChat == 1) {
-                chatGrupal
+//                chatGrupal
             }
             
         }
