@@ -9,8 +9,11 @@ import Hilos.RecibirMsjServidor;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,48 +22,56 @@ import java.util.logging.Logger;
  * @author tati
  */
 public class Comunicacion {
-     private DataOutputStream output;
+
+    private DataOutputStream output;
     private DataInputStream input;
+    private ObjectOutputStream outputObj;
+    private ObjectInputStream inputObj;
     private Socket comunicacion;
     private RecibirMsjServidor hiloS;
     private String nombre;
+    private int opcionChat = -1;
+    private ArrayList<String> chatGrupal;
 
     public Comunicacion(Socket comunicacion) {
         this.comunicacion = comunicacion;
     }
-    
-    public void runComunucacion(){
-          try {
-              getStreams();
-              hiloS=new RecibirMsjServidor(input,this);
-              hiloS.start();
-          } catch (IOException ex) {
-              Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
-          }
+
+    public void runComunucacion() {
+        try {
+            getStreams();
+            hiloS = new RecibirMsjServidor(input, inputObj, this);
+            hiloS.start();
+        } catch (IOException ex) {
+            Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     public InetAddress getAddress() {
         return comunicacion.getInetAddress();
     }
-    
+
     private void getStreams() throws IOException {
         output = new DataOutputStream(comunicacion.getOutputStream());
         output.flush();
         input = new DataInputStream(comunicacion.getInputStream());
+        inputObj = new ObjectInputStream(comunicacion.getInputStream());
+        outputObj = new ObjectOutputStream(comunicacion.getOutputStream());
+        outputObj.flush();
     }
-    
-    public void cerrarConexion(){
-          try {
-              output.close();
-              input.close();
-              comunicacion.close();
-          } catch (IOException ex) {
-              Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
-          }
+
+    public void cerrarConexion() {
+        try {
+            output.close();
+            input.close();
+            comunicacion.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    public void enviarMensaje(String mensaje) throws IOException{
-       output.writeUTF(mensaje);
+
+    public void enviarMensaje(String mensaje) throws IOException {
+        output.writeUTF(mensaje);
     }
 
     public String getNombre() {
@@ -70,5 +81,21 @@ public class Comunicacion {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    public String getOpcionChat() {
+        return nombre;
+    }
+
+    public void setOpcionChat(int opcionChat) {
+        this.opcionChat = opcionChat;
+    }
+
+    public void inicializarArrayChatGrupal() {
+        chatGrupal = new ArrayList<>();
+    }
+
+    public void nullearChatGrupal() {
+        chatGrupal = null;
+    }
+
 }

@@ -17,10 +17,11 @@ import java.net.Socket;
  * @author tati
  */
 public class Cliente {
+
     private DataOutputStream output;
     private DataInputStream input;
     private Socket client;
-    private  String host = "127.0.0.1";//localhost
+    private String host = "127.0.0.1";//localhost
     private final int PORT = 12345;
     private String nombre;
     private ControladorChat controladorC;
@@ -28,14 +29,12 @@ public class Cliente {
 
     public Cliente(String nombre, String ip) {
         this.nombre = nombre;
-        this.host=ip;
+        this.host = ip;
     }
 
     public void setControladorC(ControladorChat controladorC) {
         this.controladorC = controladorC;
     }
-
-  
 
     public String getNombre() {
         return nombre;
@@ -44,13 +43,12 @@ public class Cliente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
 
     public void runClient() {
         try {
             connectToServer();
             getStreams();
-            hilo=new RecibirMsjCliente(input, this, client, controladorC);
+            hilo = new RecibirMsjCliente(input, this, client, controladorC);
             hilo.start();
             enviarMensaje(nombre);
         } catch (IOException ex) {
@@ -61,7 +59,7 @@ public class Cliente {
     private void connectToServer() throws IOException {
         System.out.println("Esperando conexion\n");
         client = new Socket(host, PORT);
-        System.out.println(getNombre()+" "+"se ha conectado a : "+client.getInetAddress().getHostName());
+        System.out.println(getNombre() + " " + "se ha conectado a : " + client.getInetAddress().getHostName());
     }
 
     private void getStreams() throws IOException {
@@ -80,8 +78,8 @@ public class Cliente {
             ex.printStackTrace();
         }
     }
-    
-    public void enviarMensaje(String mensaje) throws IOException{
-        output.writeUTF(nombre + ": " + mensaje); 
+
+    public void enviarMensaje(String mensaje) throws IOException {
+        output.writeUTF(nombre + ": " + mensaje);
     }
 }

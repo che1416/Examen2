@@ -57,7 +57,7 @@ public class ArrayComunicacionSockets {
             Logger.getLogger(ArrayComunicacionSockets.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void enviarMensajePrivado(String msj, Comunicacion comu) throws IOException {
         try {
             lock.lock();
@@ -71,11 +71,11 @@ public class ArrayComunicacionSockets {
             Logger.getLogger(ArrayComunicacionSockets.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public  void listaArray(Comunicacion comu){
-        
-        for(int i=0;i<array.size();i++){
+
+    public void listaArray(Comunicacion comu) {
+
+        for (int i = 0; i < array.size(); i++) {
             array.get(i);
-         }
+        }
     }
 }

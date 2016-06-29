@@ -12,26 +12,28 @@ package Hilos;
 public class Lock {
 
     private boolean isLocked = false;
-    private static Lock instance=new Lock();
-   
-    private Lock(){
-        
+    private static Lock instance = new Lock();
+
+    private Lock() {
+
     }
-    public static Lock getInstance(){
+
+    public static Lock getInstance() {
         return instance;
     }
+
     public synchronized void lock()
-            throws InterruptedException{
-        while(isLocked){
+            throws InterruptedException {
+        while (isLocked) {
             wait();
         }
         isLocked = true;
     }
-    
-    public synchronized void unlock(){
+
+    public synchronized void unlock() {
         isLocked = false;
         notify();
     }
-    
+
 }//Fin de Lock
 

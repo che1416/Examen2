@@ -13,6 +13,7 @@ import Vista.Chat;
  * @author tati
  */
 public class ControladorChat {
+
     private Cliente client;
     private Chat chat;
 
@@ -20,17 +21,17 @@ public class ControladorChat {
         this.client = client;
         this.chat = chat;
     }
-     public void recibirMensahe(String mensaje){
-         chat.recibirMensahe(mensaje);
+
+    public void recibirMensahe(String mensaje) {
+        chat.recibirMensahe(mensaje);
     }
-    
-    public void enviarMensaje(String msj) throws Exception{
-      client.enviarMensaje(msj);
+
+    public void enviarMensaje(String msj) throws Exception {
+        client.enviarMensaje(msj);
     }
-    
-    public void runCliente(){
+
+    public void runCliente() {
         client.runClient();
     }
-    
-   
+
 }

@@ -16,11 +16,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    private ControladorVentanaPrincipal controladorP=new ControladorVentanaPrincipal(this);
+    private ControladorVentanaPrincipal controladorP = new ControladorVentanaPrincipal(this);
+
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -129,19 +130,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void difusionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difusionBtnActionPerformed
         controladorP.actionPerformed(evt);
-        Chat chat=new Chat(controladorP.getClient());
+        Chat chat = new Chat(controladorP.getClient());
         this.dispose();
         chat.setVisible(true);
     }//GEN-LAST:event_difusionBtnActionPerformed
 
     private void privadoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privadoBtnActionPerformed
-       ListaPrivado listP=new ListaPrivado(controladorP);
-       listP.setVisible(true);
+        ListaPrivado listP = new ListaPrivado(controladorP);
+        listP.setVisible(true);
     }//GEN-LAST:event_privadoBtnActionPerformed
 
     private void grupalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grupalBtnActionPerformed
-       ListaGrupal listG=new ListaGrupal(controladorP);
-       listG.setVisible(true);
+        ListaGrupal listG = new ListaGrupal(controladorP);
+        listG.setVisible(true);
     }//GEN-LAST:event_grupalBtnActionPerformed
 
     public String getIP() throws Exception {

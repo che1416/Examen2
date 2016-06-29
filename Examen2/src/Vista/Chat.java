@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
- 
+
 import Controlador.ControladorChat;
 import Sockets.Cliente;
 import java.util.logging.Level;
@@ -30,10 +30,11 @@ public class Chat extends javax.swing.JFrame {
     public void recibirMensahe(String mensaje) {
         historialTx.setText(historialTx.getText() + "\n" + mensaje);
     }
- 
-     public void recibirMensahePrivado(String mensaje) {
+
+    public void recibirMensahePrivado(String mensaje) {
         historialTx.setText(historialTx.getText() + "\n" + mensaje);
     }
+
     public void enviarMensaje() throws Exception {
         if (!enviarTx.getText().equals("")) {
             //  return enviarTx.getText();
@@ -115,7 +116,6 @@ public class Chat extends javax.swing.JFrame {
     private void enviarTxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarTxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_enviarTxActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton enviarBtn;
