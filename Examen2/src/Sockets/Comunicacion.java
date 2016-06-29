@@ -11,6 +11,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,11 +20,14 @@ import java.util.logging.Logger;
  * @author tati
  */
 public class Comunicacion {
-     private DataOutputStream output;
+    private DataOutputStream output;
     private DataInputStream input;
     private Socket comunicacion;
     private RecibirMsjServidor hiloS;
-
+    private String nombre;
+    private int opcionChat = -1;
+    private ArrayList<String> chatGrupal;
+    
     public Comunicacion(Socket comunicacion) {
         this.comunicacion = comunicacion;
     }
@@ -38,7 +42,7 @@ public class Comunicacion {
           }
     }
     
-    public InetAddress getAddress(){
+    public InetAddress getAddress() {
         return comunicacion.getInetAddress();
     }
     
@@ -60,6 +64,30 @@ public class Comunicacion {
     
     public void enviarMensaje(String mensaje) throws IOException{
        output.writeUTF(mensaje);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getOpcionChat() {
+        return nombre;
+    }
+
+    public void setOpcionChat(int opcionChat) {
+        this.opcionChat = opcionChat;
+    }
+    
+    public void inicializarArrayChatGrupal() {
+        chatGrupal = new ArrayList<>();
+    }
+    
+    public void nullearChatGrupal() {
+        chatGrupal = null;
     }
     
 }
