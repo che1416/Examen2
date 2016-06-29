@@ -7,6 +7,8 @@ package Controlador;
 
 import Sockets.Cliente;
 import Vista.Chat;
+import Vista.ListaGrupal;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +18,7 @@ public class ControladorChat {
 
     private Cliente client;
     private Chat chat;
+    private ListaGrupal listaG;
 
     public ControladorChat(Cliente client, Chat chat) {
         this.client = client;
@@ -33,5 +36,19 @@ public class ControladorChat {
     public void runCliente() {
         client.runClient();
     }
+    
+    public void recibirLista(ArrayList<String> lista) {
+        listaG.llenarLista(lista);
+    }
+    
+    public void setListaGrupa(ListaGrupal lista) {
+        this.listaG = lista;
+    }
+    
+    public ArrayList<Integer> getListaSeleccionados() {
+      return listaG.getListaSeleccionados();
+    }
+    
+    
 
 }
