@@ -28,16 +28,29 @@ public class ControladorVentanaPrincipal implements ActionListener {
         this.princ = princ;
     }
 
-    public void crearConexion() throws Exception {
+    public void crearConexion(int i) throws Exception {
         String ip = princ.getIP();
         String nombre = princ.getNombre();
-        client = new Cliente(nombre, ip);
+        client = new Cliente(nombre, ip,i);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         try {
-            crearConexion();
+//            crearConexion();
+            switch (ae.getActionCommand()) {
+                case "difusionBtn":
+                    crearConexion(0);
+                    break;
+                case "privadoBtn":
+                    crearConexion(1);
+                    break;
+                case "grupalBtn":
+                    crearConexion(1);
+                    break;
+                default:
+                    throw new Exception("No existe el boton");
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

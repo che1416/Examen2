@@ -10,7 +10,10 @@ import Hilos.RecibirMsjCliente;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,16 +23,20 @@ public class Cliente {
 
     private DataOutputStream output;
     private DataInputStream input;
+    private ObjectOutputStream outputObj;
+    private ObjectInputStream inputObj;
     private Socket client;
     private String host = "127.0.0.1";//localhost
     private final int PORT = 12345;
     private String nombre;
     private ControladorChat controladorC;
     private RecibirMsjCliente hilo;
-
-    public Cliente(String nombre, String ip) {
+    private int opcionChat;
+    
+    public Cliente(String nombre, String ip,int opChat) {
         this.nombre = nombre;
         this.host = ip;
+        this.opcionChat=opChat;
     }
 
     public void setControladorC(ControladorChat controladorC) {
@@ -51,6 +58,7 @@ public class Cliente {
             hilo = new RecibirMsjCliente(input, this, client, controladorC);
             hilo.start();
             enviarMensaje(nombre);
+            enviarOpcionChat();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -66,6 +74,9 @@ public class Cliente {
         output = new DataOutputStream(client.getOutputStream());
         output.flush();
         input = new DataInputStream(client.getInputStream());
+         inputObj = new ObjectInputStream(client.getInputStream());
+        outputObj = new ObjectOutputStream(client.getOutputStream());
+        outputObj.flush();
     }
 
     public void closeConnection() {
@@ -81,5 +92,12 @@ public class Cliente {
 
     public void enviarMensaje(String mensaje) throws IOException {
         output.writeUTF(nombre + ": " + mensaje);
+    }
+    public void enviarOpcionChat() throws IOException{
+      output.writeInt(opcionChat);
+    }
+    
+    public void recibirNombre() throws IOException, ClassNotFoundException{
+       ArrayList<String> array=(ArrayList<String>) inputObj.readObject();
     }
 }
