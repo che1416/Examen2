@@ -6,6 +6,7 @@
 package Sockets;
 
 import Hilos.RecibirMsjServidor;
+import Modelo.ArrayComunicacionSockets;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class Comunicacion {
     private String nombre;
     private int opcionChat = -1;
     private ArrayList<String> chatGrupal;
+    private ArrayComunicacionSockets arrayC = ArrayComunicacionSockets.getInstance();
 
     public Comunicacion(Socket comunicacion) {
         this.comunicacion = comunicacion;
@@ -64,6 +66,8 @@ public class Comunicacion {
         try {
             output.close();
             input.close();
+            outputObj.close();
+            inputObj.close();
             comunicacion.close();
         } catch (IOException ex) {
             Logger.getLogger(Comunicacion.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,6 +100,18 @@ public class Comunicacion {
 
     public void nullearChatGrupal() {
         chatGrupal = null;
+    }
+    
+    public void enviarListaNombres() throws IOException {
+        outputObj.writeObject(chatGrupal);
+    }
+    
+    public void cargarListaNombres() {
+        chatGrupal = arrayC.nombresDeClientes();
+    }
+    
+    public ArrayList<String> getChatGrupal() {
+        return chatGrupal;
     }
 
 }

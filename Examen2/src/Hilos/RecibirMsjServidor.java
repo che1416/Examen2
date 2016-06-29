@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Hilos;
 
 import Modelo.ArrayComunicacionSockets;
@@ -50,7 +45,8 @@ public class RecibirMsjServidor extends Thread {
             recibirNombre();
             recibirOpcionDeChat();
             accionOpcion();
-
+            miComunicacion.enviarListaNombres();
+            
             while (true) {
                 recibirMensaje();
             }
@@ -75,11 +71,16 @@ public class RecibirMsjServidor extends Thread {
     private void accionOpcion() {
         if (opcionChat == 0) {
             chatGrupal = null;
-            miComunicacion.inicializarArrayChatGrupal();
+            miComunicacion.nullearChatGrupal();
         } else if (opcionChat == 1) {
             chatGrupal = new ArrayList<>();
-            miComunicacion.nullearChatGrupal();
+            miComunicacion.inicializarArrayChatGrupal();
+            setArrayGrupal();
         }
+    }
+    
+    public void setArrayGrupal() {
+       chatGrupal=  miComunicacion.getChatGrupal();
     }
 
 }
