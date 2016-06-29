@@ -48,7 +48,7 @@ public class ArrayComunicacionSockets {
         try {
             lock.lock();
             for (int i = 0; i < array.size(); i++) {
-                if (msj != null && comu != array.get(i)) {
+                if (array.get(i) != null && comu != array.get(i)) {
                     array.get(i).enviarMensaje(msj);
                 }
             }
@@ -57,18 +57,12 @@ public class ArrayComunicacionSockets {
             Logger.getLogger(ArrayComunicacionSockets.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void enviarMensajePrivado(String msj, Comunicacion comu) throws IOException {
-        try {
-            lock.lock();
-            for (int i = 0; i < array.size(); i++) {
-                if (msj != null && comu == array.get(i)) {
+    
+    public void enviarMensajeGrupal(String msj, ArrayList<Integer> indices) throws IOException {
+        for (int i = 0; i < indices.size(); i++) {
+            if (array.get(i) != null) {
                     array.get(i).enviarMensaje(msj);
-                }
             }
-            lock.unlock();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ArrayComunicacionSockets.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

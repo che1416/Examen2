@@ -139,9 +139,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void privadoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privadoBtnActionPerformed
         controladorP.actionPerformed(evt);
-        ListaPrivado listP = new ListaPrivado(controladorP);
+        Chat chat = new Chat(controladorP.getClient());
         this.dispose();
-        listP.setVisible(true);
     }//GEN-LAST:event_privadoBtnActionPerformed
 
     private void grupalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grupalBtnActionPerformed
