@@ -15,18 +15,19 @@ import java.net.Socket;
  * @author tati
  */
 public class Servidor {
-     private ServerSocket server;
+
+    private ServerSocket server;
     private int port = 12345;
-    private int cont=-1;
-    
-    private ArrayComunicacionSockets arrayCom= ArrayComunicacionSockets.getInstance();
+    private int cont = -1;
+
+    private ArrayComunicacionSockets arrayCom = ArrayComunicacionSockets.getInstance();
 
     public void run() {
         try {
             server = new ServerSocket(port);
-          while(true){
-            waitForConnection();
-          }
+            while (true) {
+                waitForConnection();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -35,7 +36,7 @@ public class Servidor {
     private void waitForConnection() throws IOException {
         System.out.println("Esperando conexion...\n");
         Socket sock = server.accept();
-        Comunicacion com=new Comunicacion(sock);
+        Comunicacion com = new Comunicacion(sock);
         arrayCom.add(com);
         com.runComunucacion();
         //com.start();
@@ -45,31 +46,30 @@ public class Servidor {
     private void waitForConnectionPrivate() throws IOException {
         System.out.println("Esperando conexion...\n");
         Socket sock = server.accept();
-        Comunicacion com=new Comunicacion(sock);
+        Comunicacion com = new Comunicacion(sock);
         //arrayCom.add(com);
         com.runComunucacion();
         System.out.println("Conexion recibida por: " + com.getAddress().getHostName());
     }
 
-    
-    
     private void closeConnection() {
         System.out.println("\nTerminando conexion");
         try {
             for (int i = 0; i < arrayCom.size(); i++) {
-              if(arrayCom.get(i)!=null)
-                arrayCom.get(i).cerrarConexion();
+                if (arrayCom.get(i) != null) {
+                    arrayCom.get(i).cerrarConexion();
+                }
             }
-            
+
             server.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-    
+
     public static void main(String[] args) {
-        Servidor server=new Servidor();
+        Servidor server = new Servidor();
         server.run();
     }
-    
+
 }

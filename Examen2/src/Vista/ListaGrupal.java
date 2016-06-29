@@ -17,9 +17,10 @@ public class ListaGrupal extends javax.swing.JFrame {
      * Creates new form ListaGrupal
      */
     ControladorVentanaPrincipal miControlador;
-    public ListaGrupal( ControladorVentanaPrincipal controlador) {
+
+    public ListaGrupal(ControladorVentanaPrincipal controlador) {
         initComponents();
-       this.miControlador=controlador;
+        this.miControlador = controlador;
     }
 
     /**
@@ -98,7 +99,7 @@ public class ListaGrupal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         miControlador.actionPerformed(evt);
-        Chat chat=new Chat(miControlador.getClient());
+        Chat chat = new Chat(miControlador.getClient());
         this.dispose();
         chat.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -133,7 +134,7 @@ public class ListaGrupal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new ListaGrupal().setVisible(true);
+                // new ListaGrupal().setVisible(true);
             }
         });
     }

@@ -15,20 +15,20 @@ import javax.swing.JOptionPane;
  *
  * @author tati
  */
-public class ControladorVentanaPrincipal implements ActionListener
-{
+public class ControladorVentanaPrincipal implements ActionListener {
 
     private VentanaPrincipal princ;
     Cliente client;
 
     public Cliente getClient() {
-       return client;
-   }
+        return client;
+    }
+
     public ControladorVentanaPrincipal(VentanaPrincipal princ) {
         this.princ = princ;
     }
-    
-    public void crearConexion() throws Exception{
+
+    public void crearConexion() throws Exception {
         String ip = princ.getIP();
         String nombre = princ.getNombre();
         client = new Cliente(nombre, ip);
@@ -36,11 +36,11 @@ public class ControladorVentanaPrincipal implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent ae) {
- try {
-           crearConexion();
-       } catch (Exception ex) {
-           JOptionPane.showMessageDialog(null, ex.getMessage());
-       }    }
-    
-}
+        try {
+            crearConexion();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
 
+}
