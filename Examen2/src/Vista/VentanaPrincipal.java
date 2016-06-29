@@ -21,7 +21,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        difusionBtn.setActionCommand("difusionBtn");
+        privadoBtn.setActionCommand("privadoBtn");
+        grupalBtn.setActionCommand("grupalBtn");
     }
 
     /**
