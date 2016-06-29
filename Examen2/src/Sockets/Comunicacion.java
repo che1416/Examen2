@@ -34,7 +34,8 @@ public class Comunicacion {
     private int opcionChat = -1;
     private ArrayList<String> chatGrupal;
     private ArrayComunicacionSockets arrayC = ArrayComunicacionSockets.getInstance();
-
+    private  ArrayList<Integer> arrayN;
+    
     public Comunicacion(Socket comunicacion) {
         this.comunicacion = comunicacion;
     }
@@ -113,5 +114,8 @@ public class Comunicacion {
     public ArrayList<String> getChatGrupal() {
         return chatGrupal;
     }
-
+    
+    public void setArrayN(ArrayList<Integer> arrayN) {
+        this.arrayN = arrayN;
+    }
 }

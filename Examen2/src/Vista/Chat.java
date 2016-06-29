@@ -22,16 +22,15 @@ public class Chat extends javax.swing.JFrame {
     public Chat(Cliente client) {
         initComponents();
         controladorC = new ControladorChat(client, this);
+        ListaGrupal listG = new ListaGrupal(controladorC);
+        controladorC.setListaGrupa(listG);
         client.setControladorC(controladorC);
         controladorC.runCliente();
+        listG.setVisible(true);
         this.setLocationRelativeTo(null);
     }
 
     public void recibirMensahe(String mensaje) {
-        historialTx.setText(historialTx.getText() + "\n" + mensaje);
-    }
-
-    public void recibirMensahePrivado(String mensaje) {
         historialTx.setText(historialTx.getText() + "\n" + mensaje);
     }
 
@@ -45,6 +44,10 @@ public class Chat extends javax.swing.JFrame {
         }
     }
 
+    public ControladorChat getControlador() {
+        return  controladorC;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -59,6 +59,7 @@ public class Cliente {
             hilo.start();
             enviarMensaje(nombre);
             enviarOpcionChat();
+            enviarListaNombres();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -97,7 +98,12 @@ public class Cliente {
       output.writeInt(opcionChat);
     }
     
-    public void recibirNombre() throws IOException, ClassNotFoundException{
+    public void recibirNombres() throws IOException, ClassNotFoundException{
        ArrayList<String> array=(ArrayList<String>) inputObj.readObject();
+       controladorC.recibirLista(array);
+    }
+    
+    public void enviarListaNombres() throws IOException {
+        outputObj.writeObject(controladorC.getListaSeleccionados());
     }
 }

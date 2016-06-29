@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import Controlador.ControladorChat;
 import Controlador.ControladorVentanaPrincipal;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -16,11 +19,12 @@ public class ListaGrupal extends javax.swing.JFrame {
     /**
      * Creates new form ListaGrupal
      */
-    ControladorVentanaPrincipal miControlador;
-
-    public ListaGrupal(ControladorVentanaPrincipal controlador) {
+    ControladorChat miControlador;
+    
+    public ListaGrupal(ControladorChat controlador) {
         initComponents();
         this.miControlador = controlador;
+        jButton1.setActionCommand("iniciarChat");
     }
 
     /**
@@ -97,11 +101,7 @@ public class ListaGrupal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        miControlador.actionPerformed(evt);
-        Chat chat = new Chat(miControlador.getClient());
-        this.dispose();
-        chat.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -138,6 +138,17 @@ public class ListaGrupal extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void llenarLista(ArrayList<String> lista) {
+        DefaultListModel e =new DefaultListModel();
+        for (int i = 0; i < lista.size(); i++) {
+            e.addElement(lista.get(i));
+        }
+        
+        jList1.setModel(e);
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -146,4 +157,13 @@ public class ListaGrupal extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public ArrayList<Integer> getListaSeleccionados() {
+         int[] selec =jList1.getSelectedIndices();
+         ArrayList<Integer> als = new ArrayList<>();
+         for (int i = 0; i < selec.length; i++) {
+            als.add(selec[i]);
+        }
+         return als;
+    }
 }

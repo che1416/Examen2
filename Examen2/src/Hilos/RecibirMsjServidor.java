@@ -22,6 +22,7 @@ public class RecibirMsjServidor extends Thread {
     private DataInputStream input;
     private ArrayList<String> chatGrupal;
     private ObjectInputStream inputObj;
+    private ArrayList<Integer> arrayN;
 
     public RecibirMsjServidor(DataInputStream input, ObjectInputStream inputObj, Comunicacion comu) {
         this.input = input;
@@ -31,26 +32,31 @@ public class RecibirMsjServidor extends Thread {
 
     public void recibirMensaje() throws IOException {
         String msj = input.readUTF();
-        arrayC.enviarMensaje(msj, miComunicacion);
+        if (opcionChat == 0) {
+            arrayC.enviarMensaje(msj, miComunicacion);
+        } else {
+            arrayC.enviarMensajeGrupal(msj, arrayN);
+        }
     }
 
     public void recibirNombre() throws IOException {
-        String nombre = input.readUTF();
-        setNombre(nombre);
-        miComunicacion.setNombre(nombre);
+        String nombre2 = input.readUTF();
+        setNombre(nombre2);
+        miComunicacion.setNombre(nombre2);
     }
 
+    @Override
     public void run() {
         try {
             recibirNombre();
             recibirOpcionDeChat();
             accionOpcion();
             miComunicacion.enviarListaNombres();
-            
+            recibirArrayNombres();
             while (true) {
                 recibirMensaje();
             }
-        } catch (IOException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(RecibirMsjServidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -78,9 +84,13 @@ public class RecibirMsjServidor extends Thread {
             setArrayGrupal();
         }
     }
-    
+
     public void setArrayGrupal() {
-       chatGrupal=  miComunicacion.getChatGrupal();
+        chatGrupal = miComunicacion.getChatGrupal();
     }
 
+    public void recibirArrayNombres() throws IOException, ClassNotFoundException {
+        arrayN = (ArrayList<Integer>) inputObj.readObject();
+        miComunicacion.setArrayN(arrayN);
+    }
 }

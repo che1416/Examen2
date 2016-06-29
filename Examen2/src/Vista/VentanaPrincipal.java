@@ -138,13 +138,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_difusionBtnActionPerformed
 
     private void privadoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_privadoBtnActionPerformed
-        ListaPrivado listP = new ListaPrivado(controladorP);
-        listP.setVisible(true);
+        controladorP.actionPerformed(evt);
+        Chat chat = new Chat(controladorP.getClient());
+        this.dispose();
     }//GEN-LAST:event_privadoBtnActionPerformed
 
     private void grupalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grupalBtnActionPerformed
-        ListaGrupal listG = new ListaGrupal(controladorP);
-        listG.setVisible(true);
+        controladorP.actionPerformed(evt);
+        Chat chat = new Chat(controladorP.getClient());
+        this.dispose();
     }//GEN-LAST:event_grupalBtnActionPerformed
 
     public String getIP() throws Exception {
