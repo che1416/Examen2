@@ -46,6 +46,7 @@ public class RecibirMsjServidor extends Thread{
   }
   
     public void run(){
+       
         while(true){
             try {
                 recibirMensaje();
