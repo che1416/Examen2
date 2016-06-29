@@ -52,6 +52,7 @@ public class Cliente {
             getStreams();
             hilo=new RecibirMsjCliente(input, this, client, controladorC);
             hilo.start();
+            enviarMensaje(nombre);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -81,6 +82,6 @@ public class Cliente {
     }
     
     public void enviarMensaje(String mensaje) throws IOException{
-        output.writeUTF(mensaje); 
+        output.writeUTF(nombre + ": " + mensaje); 
     }
 }
