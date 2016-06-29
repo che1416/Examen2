@@ -43,6 +43,7 @@ public class Comunicacion {
     public void runComunucacion() {
         try {
             getStreams();
+            System.out.println("asdfhhsd");
             hiloS = new RecibirMsjServidor(input, inputObj, this);
             hiloS.start();
         } catch (IOException ex) {
@@ -61,6 +62,7 @@ public class Comunicacion {
         inputObj = new ObjectInputStream(comunicacion.getInputStream());
         outputObj = new ObjectOutputStream(comunicacion.getOutputStream());
         outputObj.flush();
+        System.out.println("getStream");
     }
 
     public void cerrarConexion() {

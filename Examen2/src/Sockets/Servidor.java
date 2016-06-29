@@ -18,7 +18,6 @@ public class Servidor {
 
     private ServerSocket server;
     private int port = 12345;
-    private int cont = -1;
 
     private ArrayComunicacionSockets arrayCom = ArrayComunicacionSockets.getInstance();
 
@@ -39,7 +38,7 @@ public class Servidor {
         Comunicacion com = new Comunicacion(sock);
         arrayCom.add(com);
         com.runComunucacion();
-        //com.start();
+       
         System.out.println("Conexion recibida por: " + com.getAddress().getHostName());
     }
 
@@ -47,7 +46,7 @@ public class Servidor {
         System.out.println("Esperando conexion...\n");
         Socket sock = server.accept();
         Comunicacion com = new Comunicacion(sock);
-        //arrayCom.add(com);
+        arrayCom.add(com);
         com.runComunucacion();
         System.out.println("Conexion recibida por: " + com.getAddress().getHostName());
     }
@@ -60,7 +59,6 @@ public class Servidor {
                     arrayCom.get(i).cerrarConexion();
                 }
             }
-
             server.close();
         } catch (IOException ex) {
             ex.printStackTrace();

@@ -48,11 +48,14 @@ public class RecibirMsjServidor extends Thread {
     @Override
     public void run() {
         try {
+            System.out.println("sfdsfsdfsfsdfsdfsdfsdf");
             recibirNombre();
             recibirOpcionDeChat();
             accionOpcion();
+            if(opcionChat == 1) {
             miComunicacion.enviarListaNombres();
             recibirArrayNombres();
+            }
             while (true) {
                 recibirMensaje();
             }

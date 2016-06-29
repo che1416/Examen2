@@ -49,6 +49,8 @@ public class ControladorChat {
       return listaG.getListaSeleccionados();
     }
     
-    
+    public void iniciarVentanaChat() {
+        chat.setVisible(true);
+    }
 
 }

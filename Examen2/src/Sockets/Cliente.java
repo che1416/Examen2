@@ -59,7 +59,9 @@ public class Cliente {
             hilo.start();
             enviarMensaje(nombre);
             enviarOpcionChat();
+            if(opcionChat == 1) {
             enviarListaNombres();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
